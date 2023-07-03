@@ -16,6 +16,8 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest) {
+        assert orderRequest != null;
+        log.info("The order request is in place order" + orderRequest.getOrderLineItemsDtoList().get(0).toString() + " here");
         orderService.placeOrder(orderRequest);
         return "Order Placed Successfully";
     }
